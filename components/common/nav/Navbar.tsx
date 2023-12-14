@@ -21,7 +21,7 @@ const Navbar: FC<Props> = (props): JSX.Element => {
         </div>
 
         {/* Dark Mode Button */}
-        <div className="flex items-center space-x-5">
+        <div className="flex items-center space-x-5 hover:text-yellow-400 transition ease-in-out">
           <button>
             <HiLightBulb size={34} />
           </button>
