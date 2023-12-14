@@ -14,12 +14,18 @@ const Navbar: FC<Props> = (props): JSX.Element => {
           <span>{APP_NAME}</span>
         </div>
       </Link>
+      <div className="flex items-center space-x-4">
+        {/* Add a School Button*/}
+        <div className="border p-3 rounded hover:text-black hover:bg-white transition ease-in-out">
+          <button>Add a School</button>
+        </div>
 
-      {/* Dark Mode Button */}
-      <div className="flex items-center space-x-5">
-        <button>
-          <HiLightBulb size={34} />
-        </button>
+        {/* Dark Mode Button */}
+        <div className="flex items-center space-x-5">
+          <button>
+            <HiLightBulb size={34} />
+          </button>
+        </div>
       </div>
     </div>
   );
