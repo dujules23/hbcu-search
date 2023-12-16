@@ -15,18 +15,27 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
 
 const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  school: z.string().min(2, {
+    message: "School must be at least 2 characters.",
+  }),
+  specialization: z.string().min(2, {
+    message: "Specialization must be at least 2 characters.",
+  }),
+  location: z.string().min(2, {
+    message: "Location must be at least 2 characters.",
   }),
 });
 
-export function AddSchoolForm({ setIsClicked }) {
+export function AddSchoolForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      school: "",
+      specialization: "",
+      location: "",
     },
   });
 
@@ -38,35 +47,63 @@ export function AddSchoolForm({ setIsClicked }) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex-col space-y-4 border p-2 rounded-xl"
+      >
         <FormField
           control={form.control}
-          name="username"
+          name="school"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>School</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="school" {...field} />
               </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button
-          className="hover:bg-blue-500 rounded-full shadow-md"
-          type="submit"
-        >
-          Submit
-        </Button>
-        <Button
-          className="hover:bg-red-600 rounded-full"
-          onClick={() => setIsClicked(false)}
-        >
-          X
-        </Button>
+        <FormField
+          control={form.control}
+          name="specialization"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Specialization</FormLabel>
+              <FormControl>
+                <Input placeholder="specialization" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="location"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Location</FormLabel>
+              <FormControl>
+                <Input placeholder="location" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <div className="flex items-center justify-center">
+          <Button
+            className="hover:bg-blue-500 rounded-full shadow-md"
+            type="submit"
+          >
+            Submit
+          </Button>
+          {/* <Button
+            className="hover:bg-red-600 rounded-full"
+            onClick={() => setIsClicked(false)}
+          >
+            X
+          </Button> */}
+        </div>
       </form>
     </Form>
   );

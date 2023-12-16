@@ -1,5 +1,14 @@
 export interface SchoolData {
-  status?: string;
-  email?: string;
-  amount?: string;
+  schoolName?: string;
+  link?: string;
+  location?: string;
+  specialization?: string;
+  description?: string;
+  image?: string;
+}
+
+export interface SchoolInput {
+  name?: string;
+  label?: string;
+  placeholder?: string;
 }

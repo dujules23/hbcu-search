@@ -3,11 +3,16 @@ import { FC, useState } from "react";
 import { APP_NAME } from "../AppHead";
 import { HiLightBulb } from "react-icons/hi";
 import { AddSchoolForm } from "../../../app/schools/AddSchoolForm";
+import FormModal from "@/components/FormModal";
+import { Form } from "react-hook-form";
+import { ModalProps } from "@/components/ModalContainer";
 
 interface Props {}
 
-const Navbar: FC<Props> = (props): JSX.Element => {
+const Navbar: FC<Props> = (): JSX.Element => {
   const [isClicked, setIsClicked] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  console.log(isClicked);
 
   const openForm = () => {
     if (!isClicked) {
@@ -27,10 +32,16 @@ const Navbar: FC<Props> = (props): JSX.Element => {
       <div className="flex items-center space-x-4">
         {/* Add a School Button*/}
         <div className="border p-3 rounded hover:text-black hover:bg-white transition ease-in-out">
-          <button onClick={openForm}>Add a School</button>
+          <button onClick={() => setIsOpen(true)}>Add a School</button>
         </div>
 
-        {isClicked && <AddSchoolForm setIsClicked={setIsClicked} />}
+        {isOpen && (
+          <FormModal
+            visible={isOpen}
+            onClose={() => setIsOpen(false)}
+            onCancel={() => setIsOpen(false)}
+          />
+        )}
 
         {/* Dark Mode Button */}
         <div className="flex items-center space-x-5 hover:text-yellow-400 transition ease-in-out">
