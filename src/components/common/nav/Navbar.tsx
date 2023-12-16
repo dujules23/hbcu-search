@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FC, useState } from "react";
 import { APP_NAME } from "../AppHead";
 import { HiLightBulb } from "react-icons/hi";
-import { AddSchoolForm } from "../../../src/app/schools/AddSchoolForm";
+import { AddSchoolForm } from "../../../app/schools/AddSchoolForm";
 
 interface Props {}
 
