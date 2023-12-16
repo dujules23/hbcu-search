@@ -11,7 +11,10 @@ const SearchBar: FC<Props> = (props): JSX.Element => {
         <Input className="w-72 rounded" placeholder="Search..." />
       </div>
       <div>
-        <Button className="w-32 rounded" variant="outline">
+        <Button
+          className="w-32 rounded hover:bg-white hover:text-black transition ease-in-out"
+          variant="outline"
+        >
           Search
         </Button>
       </div>

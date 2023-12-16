@@ -55,8 +55,18 @@ export function AddSchoolForm({ setIsClicked }) {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
-        <Button onClick={() => setIsClicked(false)}>X</Button>
+        <Button
+          className="hover:bg-blue-500 rounded-full shadow-md"
+          type="submit"
+        >
+          Submit
+        </Button>
+        <Button
+          className="hover:bg-red-600 rounded-full"
+          onClick={() => setIsClicked(false)}
+        >
+          X
+        </Button>
       </form>
     </Form>
   );
