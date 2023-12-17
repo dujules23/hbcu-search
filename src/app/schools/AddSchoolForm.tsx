@@ -49,7 +49,7 @@ export function AddSchoolForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex-col space-y-4 border p-2 rounded-xl"
+        className="flex-col space-y-4 p-4 bg-gray-500 rounded-xl"
       >
         <FormField
           control={form.control}
@@ -97,12 +97,6 @@ export function AddSchoolForm() {
           >
             Submit
           </Button>
-          {/* <Button
-            className="hover:bg-red-600 rounded-full"
-            onClick={() => setIsClicked(false)}
-          >
-            X
-          </Button> */}
         </div>
       </form>
     </Form>
