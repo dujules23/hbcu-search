@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import axios from "axios";
 
 const formSchema = z.object({
   school: z.string().min(2, {
@@ -39,9 +40,17 @@ export function AddSchoolForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
+    try {
+      const { data } = await axios.post("/api/school", values);
+
+      console.log(data);
+    } catch (error: any) {
+      console.log(error);
+    }
+
     console.log(values);
   }
 

@@ -1,37 +1,52 @@
-import { Schema, model, models } from "mongoose";
+import { Schema, model, models, Model, ObjectId } from "mongoose";
 
-const schoolSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-    unique: true,
+export interface SchoolModelSchema {
+  _id: ObjectId;
+  name: string;
+  link: string;
+  location: string;
+  specialization: string;
+  description: string;
+  image: string;
+}
+
+const SchoolSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    link: {
+      type: String,
+      required: true,
+      unique: false,
+    },
+    location: {
+      type: String,
+      required: true,
+    },
+    specialization: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+      unique: false,
+    },
+    image: {
+      type: String,
+      required: true,
+      unique: false,
+    },
   },
-  link: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  location: {
-    type: String,
-    required: true,
-  },
-  specialization: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  image: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
 // Prevents duplicate entries from going to MongoDB
-const School = models?.School || model("schoolSchema", schoolSchema);
+const School = models?.School || model("schoolSchema", SchoolSchema);
 
-export default School;
+export default School as Model<SchoolModelSchema>;
