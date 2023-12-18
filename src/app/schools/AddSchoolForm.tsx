@@ -19,7 +19,7 @@ import { useState } from "react";
 import axios from "axios";
 
 const formSchema = z.object({
-  school: z.string().min(2, {
+  name: z.string().min(2, {
     message: "School must be at least 2 characters.",
   }),
   specialization: z.string().min(2, {
@@ -34,7 +34,7 @@ export function AddSchoolForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      school: "",
+      name: "",
       specialization: "",
       location: "",
     },
@@ -62,12 +62,12 @@ export function AddSchoolForm() {
       >
         <FormField
           control={form.control}
-          name="school"
+          name="name"
           render={({ field }) => (
             <FormItem>
               <FormLabel>School</FormLabel>
               <FormControl>
-                <Input placeholder="school" {...field} />
+                <Input placeholder="name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
