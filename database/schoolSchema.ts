@@ -47,6 +47,6 @@ const SchoolSchema = new Schema<SchoolModelSchema>(
 );
 
 // Prevents duplicate entries from going to MongoDB
-const School = models?.School || model("schoolSchema", SchoolSchema);
+const School = models?.School || model("School", SchoolSchema);
 
 export default School as Model<SchoolModelSchema>;
