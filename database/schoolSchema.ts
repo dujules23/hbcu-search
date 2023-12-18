@@ -10,7 +10,7 @@ export interface SchoolModelSchema {
   image: string;
 }
 
-const SchoolSchema = new Schema(
+const SchoolSchema = new Schema<SchoolModelSchema>(
   {
     name: {
       type: String,
@@ -19,7 +19,7 @@ const SchoolSchema = new Schema(
     },
     link: {
       type: String,
-      required: true,
+      required: false,
       unique: false,
     },
     location: {
@@ -32,12 +32,12 @@ const SchoolSchema = new Schema(
     },
     description: {
       type: String,
-      required: true,
+      required: false,
       unique: false,
     },
     image: {
       type: String,
-      required: true,
+      required: false,
       unique: false,
     },
   },

@@ -12,3 +12,9 @@ export interface SchoolInput {
   label?: string;
   placeholder?: string;
 }
+
+export interface IncomingSchool {
+  school?: string;
+  specialization?: string;
+  location?: string;
+}
