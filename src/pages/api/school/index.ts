@@ -22,8 +22,6 @@ const addSchool: NextApiHandler = async (req, res) => {
     // finds collection of schools
     const newSchool = await School.create(req.body);
 
-    console.log(newSchool);
-
     // response with data object
     res.status(201).json({ success: true, data: newSchool });
     // backend console log for verification of data retrieval
