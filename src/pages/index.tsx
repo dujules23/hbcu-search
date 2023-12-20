@@ -16,29 +16,6 @@ type Props = {
 };
 
 const Home: NextPage<Props> = ({ schools }) => {
-  console.log(schools);
-  // const data = [
-  //   {
-  //     id: 1,
-  //     institution: "Benedict College",
-  //     specialization: "Technology",
-  //     location: "Columbia, SC",
-  //   },
-  // ];
-
-  // const getSchools = async () => {
-  //   try {
-  //     const { data } = await axios("/api/school/");
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getSchools();
-  // }, []);
-
   return (
     <>
       {/* <div>
@@ -60,11 +37,12 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
 
     /* find all the data in our database */
     const result = await School.find({});
-    console.log("Result:", result);
 
     /* Ensures all objectIds and nested objectIds are serialized as JSON data */
-    const schools = result.map((doc: any) => doc);
-    console.log("Schools:", schools);
+    const schools = result.map((doc: any) => {
+      const school = JSON.parse(JSON.stringify(doc));
+      return school;
+    });
 
     return {
       props: {
@@ -72,7 +50,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
       },
     };
   } catch (error) {
-    console.error("Error fetching data", error);
     return { notFound: true };
   }
 };
