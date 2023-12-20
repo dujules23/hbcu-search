@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 import { Button } from "@/components/ui/button";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import {
   Form,
   FormControl,
@@ -31,6 +32,8 @@ const formSchema = z.object({
 });
 
 export function AddSchoolForm() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -44,14 +47,12 @@ export function AddSchoolForm() {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     try {
+      setIsLoading(true);
       const { data } = await axios.post("/api/school", values);
-
-      console.log(data);
+      setIsLoading(false);
     } catch (error: any) {
       console.log(error);
     }
-
-    console.log(values);
   }
 
   return (
@@ -101,10 +102,15 @@ export function AddSchoolForm() {
         />
         <div className="flex items-center justify-center">
           <Button
-            className="hover:bg-blue-500 rounded-full shadow-md"
+            className="hover:bg-blue-500 rounded-full shadow-md p-3"
             type="submit"
           >
             Submit
+            <div className="p-1">
+              {isLoading && (
+                <AiOutlineLoading3Quarters className="animate-spin" />
+              )}
+            </div>
           </Button>
         </div>
       </form>
