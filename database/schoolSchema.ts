@@ -15,12 +15,12 @@ const SchoolSchema = new Schema<SchoolModelSchema>(
     name: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     link: {
       type: String,
       required: false,
-      unique: false,
+      // unique: false,
     },
     location: {
       type: String,
@@ -33,12 +33,12 @@ const SchoolSchema = new Schema<SchoolModelSchema>(
     description: {
       type: String,
       required: false,
-      unique: false,
+      // unique: false,
     },
     image: {
       type: String,
       required: false,
-      unique: false,
+      // unique: false,
     },
   },
   {
