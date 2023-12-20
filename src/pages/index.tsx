@@ -18,11 +18,6 @@ type Props = {
 const Home: NextPage<Props> = ({ schools }) => {
   return (
     <>
-      {/* <div>
-        {schools.map((school: ReactNode) => {
-          school.name;
-        })}
-      </div> */}
       <Navbar />
       <SearchBar />
       <DataTable columns={columns} data={schools} />
