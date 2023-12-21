@@ -106,7 +106,7 @@ export function AddSchoolForm() {
             type="submit"
           >
             Submit
-            <div className="p-1">
+            <div className="pl-3">
               {isLoading && (
                 <AiOutlineLoading3Quarters className="animate-spin" />
               )}

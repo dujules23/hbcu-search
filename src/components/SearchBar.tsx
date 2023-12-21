@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FC } from "react";
+import { IoSearch } from "react-icons/io5";
 
 interface Props {}
 
@@ -16,6 +17,9 @@ const SearchBar: FC<Props> = (props): JSX.Element => {
           variant="outline"
         >
           Search
+          <div className="pl-3">
+            <IoSearch />
+          </div>
         </Button>
       </div>
     </div>
