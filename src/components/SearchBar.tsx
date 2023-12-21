@@ -6,7 +6,7 @@ interface Props {}
 
 const SearchBar: FC<Props> = (props): JSX.Element => {
   return (
-    <div className="flex items-center justify-center p-7 mt-3">
+    <div className="flex items-center justify-center p-7 mt-1">
       <div className="pr-2">
         <Input className="w-72 rounded" placeholder="Search..." />
       </div>
