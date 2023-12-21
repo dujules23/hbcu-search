@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { GetServerSideProps, NextPage } from "next";
 import dbConnect from "../../lib/dbConnect";
-import School from "../../database/schoolSchema";
+import School from "../../models/schoolSchema";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import dbConnect from "../../../../database/dbConnect";
-import School from "../../../../database/schoolSchema";
+import dbConnect from "../../../../models/dbConnect";
+import School from "../../../../models/schoolSchema";
 
 // get function that creates new school data/document
 const addSchool = async (req: NextApiRequest, res: NextApiResponse) => {

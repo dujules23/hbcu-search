@@ -1,6 +1,6 @@
 import { NextApiHandler } from "next";
 import dbConnect from "../../../../lib/dbConnect";
-import School from "../../../../database/schoolSchema";
+import School from "../../../../models/schoolSchema";
 
 const handler: NextApiHandler = async (req, res) => {
   const { method } = req;
