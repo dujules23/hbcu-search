@@ -8,10 +8,13 @@ interface Props {}
 const SearchBar: FC<Props> = (props): JSX.Element => {
   return (
     <div className="flex items-center justify-center p-7 mt-1">
-      <div className="pr-2">
-        <Input className="w-72 rounded" placeholder="Search..." />
+      <div className="pr-2 ">
+        <Input
+          className="w-72 rounded border-gray-700 hover:bg-gray-700 transition ease-in-out cursor-pointer"
+          placeholder="Search..."
+        />
       </div>
-      <div>
+      {/* <div>
         <Button
           className="w-32 rounded hover:bg-white hover:text-black transition ease-in-out"
           variant="outline"
@@ -21,7 +24,7 @@ const SearchBar: FC<Props> = (props): JSX.Element => {
             <IoSearch />
           </div>
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 };
