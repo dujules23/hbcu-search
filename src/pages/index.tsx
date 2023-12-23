@@ -31,7 +31,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
     await dbConnect();
 
     /* find all the data in our database */
-    const result = await School.find({});
+    const result = await School.find({}).sort({ name: "asc" });
 
     /* Ensures all objectIds and nested objectIds are serialized as JSON data */
     const schools = result.map((doc: any) => {
