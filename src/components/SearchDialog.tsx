@@ -20,13 +20,14 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
+import { GetServerSideProps, GetStaticProps, NextPage } from "next";
 
-interface Props {
+type Props = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+};
 
-export function SearchDialog({ open, setOpen }: Props) {
+export const SearchDialog: NextPage<Props> = ({ open, setOpen }) => {
   return (
     <>
       <CommandDialog open={open} onOpenChange={setOpen}>
@@ -69,4 +70,4 @@ export function SearchDialog({ open, setOpen }: Props) {
       </CommandDialog>
     </>
   );
-}
+};
