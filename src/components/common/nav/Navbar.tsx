@@ -19,7 +19,6 @@ interface Props {}
 const Navbar: FC<Props> = (): JSX.Element => {
   const [isClicked, setIsClicked] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  console.log(isClicked);
 
   const openForm = () => {
     if (!isClicked) {
@@ -44,12 +43,13 @@ const Navbar: FC<Props> = (): JSX.Element => {
           </div>
           <></>
 
-          <FormModal
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
-            // onClose={() => setIsOpen(false)}
-            // onCancel={() => setIsOpen(false)}
-          />
+          {isOpen && (
+            <FormModal
+              visible={isOpen}
+              onClose={() => setIsOpen(false)}
+              onCancel={() => setIsOpen(false)}
+            />
+          )}
 
           {/* Dark Mode Button */}
           <div className="flex items-center space-x-5 hover:text-yellow-400 transition ease-in-out">
