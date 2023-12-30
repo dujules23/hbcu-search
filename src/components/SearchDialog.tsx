@@ -21,51 +21,55 @@ import {
   CommandShortcut,
 } from "@/components/ui/command";
 import { GetServerSideProps, GetStaticProps, NextPage } from "next";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Link from "next/link";
 
 type Props = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const SearchDialog: NextPage<Props> = ({ open, setOpen }) => {
+export interface School {
+  _id: string;
+  name: string;
+  location: string;
+  specialization: string;
+  createdAt: Date;
+  updatedAt: Date;
+  __v: number;
+}
+
+export const SearchDialog: React.FC<Props> = ({
+  open,
+  setOpen,
+}): JSX.Element => {
+  const [schools, setSchools] = useState<School[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios("/api/school");
+      setSchools(data.data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Search for a school..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
-            <CommandItem className="hover:bg-gray-500 cursor-pointer">
-              <Calendar className="mr-2 h-4 w-4" />
-              <span>Calendar</span>
-            </CommandItem>
-            <CommandItem>
-              <Smile className="mr-2 h-4 w-4" />
-              <span>Search Emoji</span>
-            </CommandItem>
-            <CommandItem>
-              <Calculator className="mr-2 h-4 w-4" />
-              <span>Calculator</span>
-            </CommandItem>
-          </CommandGroup>
-          <CommandSeparator className="" />
-          <CommandGroup heading="Settings">
-            <CommandItem>
-              <User className="mr-2 h-4 w-4" />
-              <span>Profile</span>
-              <CommandShortcut>⌘P</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <CreditCard className="mr-2 h-4 w-4" />
-              <span>Billing</span>
-              <CommandShortcut>⌘B</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <Settings className="mr-2 h-4 w-4" />
-              <span>Settings</span>
-              <CommandShortcut>⌘S</CommandShortcut>
-            </CommandItem>
-          </CommandGroup>
+          {schools.map((school) => {
+            return (
+              <CommandItem key={school._id}>
+                <Link className="hover:bg-gray-700 p-2" href={"/school/"}>
+                  {school.name}
+                </Link>
+              </CommandItem>
+            );
+          })}
         </CommandList>
       </CommandDialog>
     </>
