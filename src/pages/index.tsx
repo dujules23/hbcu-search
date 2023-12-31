@@ -3,8 +3,6 @@ import SearchBar from "../../src/components/SearchBar";
 import { DataTable } from "../app/schools/DataTable";
 import { columns } from "../app/schools/columns";
 import Navbar from "../components/common/nav/Navbar";
-import { useEffect } from "react";
-import axios from "axios";
 import { GetServerSideProps, NextPage } from "next";
 import dbConnect from "../../lib/dbConnect";
 import School from "../../models/schoolSchema";
