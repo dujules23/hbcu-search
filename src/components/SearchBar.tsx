@@ -8,7 +8,7 @@ const SearchBar: FC<Props> = (props): JSX.Element => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex items-center justify-center p-7 mt-1">
+    <div className="flex items-center justify-center p-2">
       <div className="pr-2 ">
         <Input
           onClick={() => setOpen(true)}

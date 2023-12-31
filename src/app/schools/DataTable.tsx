@@ -37,7 +37,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="">
-      <div className="rounded border items-center m-4">
+      <div className="rounded border items-center m-4 md:w-92">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -87,7 +87,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-center space-x-2 py-4 m-2">
+      <div className="flex items-center justify-center space-x-2 py-2 m-1">
         <Button
           variant="outline"
           size="sm"
