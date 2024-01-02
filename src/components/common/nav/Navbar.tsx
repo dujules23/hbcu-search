@@ -37,20 +37,6 @@ const Navbar: FC<Props> = (): JSX.Element => {
           </div>
         </Link>
         <div className="flex items-center space-x-4">
-          {/* Add a School Button*/}
-          <div className="border p-3 rounded hover:text-black hover:bg-white transition ease-in-out">
-            <button onClick={() => setIsOpen(true)}>Add a School</button>
-          </div>
-          <></>
-
-          {isOpen && (
-            <FormModal
-              visible={isOpen}
-              onClose={() => setIsOpen(false)}
-              onCancel={() => setIsOpen(false)}
-            />
-          )}
-
           {/* Dark Mode Button */}
           <div className="flex items-center space-x-5 hover:text-yellow-400 transition ease-in-out">
             <button>
