@@ -17,6 +17,22 @@ export const columns: ColumnDef<School>[] = [
   {
     accessorKey: "name",
     header: () => <div className="">Name</div>,
+    // this allows you to modify cell, in this instance this returns a link to a school page
+    cell: ({ row }) => {
+      const handleClick = () => {
+        document.location.href = row.original.link;
+      };
+      return (
+        <a
+          className="cursor-pointer hover:text-gray-600 hover:underline transition ease-in-out"
+          href={row.original.link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {row.original.name}
+        </a>
+      );
+    },
   },
   {
     accessorKey: "specialization",
