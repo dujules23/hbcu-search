@@ -35,6 +35,7 @@ export interface School {
   name: string;
   location: string;
   specialization: string;
+  link: string;
   createdAt: Date;
   updatedAt: Date;
   __v: number;
@@ -50,6 +51,7 @@ export const SearchDialog: React.FC<Props> = ({
     const fetchData = async () => {
       const { data } = await axios("/api/school");
       setSchools(data.data);
+      console.log(schools);
     };
 
     fetchData();
@@ -64,9 +66,14 @@ export const SearchDialog: React.FC<Props> = ({
           {schools.map((school) => {
             return (
               <CommandItem key={school._id}>
-                <Link className="hover:bg-gray-700 p-2" href={"/school/"}>
+                <a
+                  className="hover:bg-gray-700 p-2"
+                  href={`//${school.link}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {school.name}
-                </Link>
+                </a>
               </CommandItem>
             );
           })}

@@ -16,7 +16,7 @@ export interface School {
 export const columns: ColumnDef<School>[] = [
   {
     accessorKey: "name",
-    header: () => <div className="">Name</div>,
+    header: () => <div className="font-bold underline">Name</div>,
     // this allows you to modify cell, in this instance this returns a link to a school page
     cell: ({ row }) => {
       return (
@@ -34,10 +34,10 @@ export const columns: ColumnDef<School>[] = [
   },
   {
     accessorKey: "specialization",
-    header: () => <div className="">Specialization</div>,
+    header: () => <div className="font-bold underline">Specialization</div>,
   },
   {
     accessorKey: "location",
-    header: () => <div className="">Location</div>,
+    header: () => <div className="font-bold underline">Location</div>,
   },
 ];
