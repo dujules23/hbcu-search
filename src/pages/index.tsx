@@ -1,11 +1,10 @@
 import { Inter } from "next/font/google";
-import SearchBar from "../../src/components/SearchBar";
 import { DataTable } from "../app/schools/DataTable";
 import { columns } from "../app/schools/columns";
-import Navbar from "../components/common/nav/Navbar";
 import { GetServerSideProps, NextPage } from "next";
 import dbConnect from "../../lib/dbConnect";
 import School from "../../models/schoolSchema";
+import DefaultLayout from "@/components/layout/DefaultLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,11 +14,9 @@ type Props = {
 
 const Home: NextPage<Props> = ({ schools }) => {
   return (
-    <>
-      <Navbar />
-      <SearchBar />
+    <DefaultLayout>
       <DataTable columns={columns} data={schools} />
-    </>
+    </DefaultLayout>
   );
 };
 
