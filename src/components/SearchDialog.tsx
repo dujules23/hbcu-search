@@ -1,14 +1,6 @@
 "use client";
 
 import * as React from "react";
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react";
 
 import {
   CommandDialog,
@@ -24,6 +16,7 @@ import { GetServerSideProps, GetStaticProps, NextPage } from "next";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import { trimSchoolText } from "../../utils/helper";
 
 type Props = {
   open: boolean;
@@ -51,7 +44,6 @@ export const SearchDialog: React.FC<Props> = ({
     const fetchData = async () => {
       const { data } = await axios("/api/school");
       setSchools(data.data);
-      console.log(schools);
     };
 
     fetchData();
@@ -66,14 +58,12 @@ export const SearchDialog: React.FC<Props> = ({
           {schools.map((school) => {
             return (
               <CommandItem key={school._id}>
-                <a
-                  className="hover:bg-gray-700 p-2"
-                  href={`//${school.link}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  className="hover:text-gray-700 hover:underline transition ease-in-out p-2"
+                  href={"/" + trimSchoolText(school.name)}
                 >
                   {school.name}
-                </a>
+                </Link>
               </CommandItem>
             );
           })}

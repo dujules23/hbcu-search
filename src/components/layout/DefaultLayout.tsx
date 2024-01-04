@@ -5,15 +5,15 @@ import SearchBar from "../SearchBar";
 import Footer from "../Footer";
 
 interface Props {
-  title?: string;
+  name?: string;
   desc?: string;
   children?: ReactNode;
 }
 
-const DefaultLayout: FC<Props> = ({ title, desc, children }): JSX.Element => {
+const DefaultLayout: FC<Props> = ({ name, desc, children }): JSX.Element => {
   return (
     <>
-      <AppHead title={title} desc={desc} />
+      <AppHead title={name} desc={desc} />
       <div className="min-h-screen transition">
         <Navbar />
         <SearchBar />
