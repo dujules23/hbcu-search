@@ -2,6 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
+import { trimSchoolText } from "../../../utils/helper";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -21,14 +22,12 @@ export const columns: ColumnDef<School>[] = [
     cell: ({ row }) => {
       return (
         // not using a Link tag because this is for internal links/routing, a tag with the implicit protocol works for external links.
-        <a
+        <Link
           className="cursor-pointer hover:text-gray-600 hover:underline transition ease-in-out"
-          href={`//${row.original.link}`}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={"/" + trimSchoolText(row.original.name)}
         >
           {row.original.name}
-        </a>
+        </Link>
       );
     },
   },
