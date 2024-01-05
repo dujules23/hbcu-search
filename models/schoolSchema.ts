@@ -8,6 +8,7 @@ export interface SchoolModelSchema {
   specialization: string;
   description: string;
   image: string;
+  slug: string;
 }
 
 const SchoolSchema = new Schema<SchoolModelSchema>(
@@ -39,6 +40,11 @@ const SchoolSchema = new Schema<SchoolModelSchema>(
       type: String,
       required: false,
       unique: false,
+    },
+    slug: {
+      type: String,
+      required: false,
+      unique: true,
     },
   },
   {
