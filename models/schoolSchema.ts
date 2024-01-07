@@ -20,7 +20,7 @@ const SchoolSchema = new Schema<SchoolModelSchema>(
     },
     link: {
       type: String,
-      required: false,
+      required: true,
       unique: false,
     },
     location: {
@@ -29,7 +29,7 @@ const SchoolSchema = new Schema<SchoolModelSchema>(
     },
     specialization: {
       type: String,
-      required: true,
+      required: false,
     },
     description: {
       type: String,

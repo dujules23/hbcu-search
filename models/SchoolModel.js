@@ -6,6 +6,7 @@ const School = mongoose.model(
     name: String,
     link: String,
     location: String,
+    slug: String,
   })
 );
 

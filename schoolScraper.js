@@ -23,6 +23,10 @@ async function schoolScraper() {
       const tds = $(element).find("td");
       // finds school names
       const name = $(tds[0]).text();
+      // turns school names in to slugs then puts them into the database
+      const slug = name.toLocaleLowerCase().replace(/ /g, "-");
+      console.log(slug);
+
       // finds locations
       const location = $(tds[1]).text();
       // finds all links
@@ -32,6 +36,7 @@ async function schoolScraper() {
         name: name,
         location: location,
         link: link,
+        slug: slug,
       });
       // saves to MongoDB
       await school.save();

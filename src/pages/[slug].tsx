@@ -18,8 +18,7 @@ import { trimSchoolText } from "../../utils/helper";
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const SchoolPage: NextPage<Props> = ({ school }) => {
-  const { id, name, link, location, specialization, description, image, slug } =
-    school;
+  const { id, name, link, location, slug } = school;
 
   console.log(school);
   return <DefaultLayout>School Page</DefaultLayout>;
@@ -31,11 +30,11 @@ export default SchoolPage;
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
     await dbConnect();
-    const schools = await School.find().select("name");
+    const schools = await School.find().select("slug");
     // console.log(schools);
-    const paths = schools.map(({ name }) => ({
+    const paths = schools.map(({ slug }) => ({
       params: {
-        name: trimSchoolText(name).toLocaleString(),
+        slug: trimSchoolText(slug).toLocaleString(),
       },
     }));
     // console.log(paths);
@@ -46,7 +45,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   } catch (error) {
     console.log("Not getting static paths", error);
     return {
-      paths: [{ params: { name: "/" } }],
+      paths: [{ params: { slug: "/" } }],
       fallback: false,
     };
   }
@@ -58,33 +57,21 @@ interface StaticPropsResponse {
     name: string;
     link: string;
     location: string;
-    specialization: string;
-    description: string;
-    image: string;
     slug: string;
   };
 }
 
 export const getStaticProps: GetStaticProps<
   StaticPropsResponse,
-  { name: string }
+  { slug: string }
 > = async ({ params }) => {
   try {
     await dbConnect();
-    const school = await School.findOne({ name: params?.name });
+    const school = await School.findOne({ slug: params?.slug });
     console.log(school);
     if (!school) return { notFound: true };
 
-    const {
-      _id,
-      name,
-      link,
-      location,
-      specialization,
-      description,
-      image,
-      slug,
-    } = school;
+    const { _id, name, link, location, slug } = school;
 
     return {
       props: {
@@ -93,9 +80,6 @@ export const getStaticProps: GetStaticProps<
           name,
           link,
           location,
-          specialization,
-          description,
-          image,
           slug,
         },
       },
