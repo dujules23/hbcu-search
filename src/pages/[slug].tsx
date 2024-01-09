@@ -31,13 +31,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   try {
     await dbConnect();
     const schools = await School.find().select("slug");
-    // console.log(schools);
     const paths = schools.map(({ slug }) => ({
       params: {
         slug: trimSchoolText(slug).toLocaleString(),
       },
     }));
-    // console.log(paths);
+
     return {
       paths,
       fallback: "blocking",
@@ -68,7 +67,6 @@ export const getStaticProps: GetStaticProps<
   try {
     await dbConnect();
     const school = await School.findOne({ slug: params?.slug });
-    console.log(school);
     if (!school) return { notFound: true };
 
     const { _id, name, link, location, slug } = school;

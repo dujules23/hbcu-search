@@ -1,5 +1,5 @@
-export interface SchoolData {
-  schoolName?: string;
+export interface SchoolDetail {
+  name?: string;
   link?: string;
   location?: string;
   specialization?: string;
