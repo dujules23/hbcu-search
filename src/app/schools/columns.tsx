@@ -9,9 +9,8 @@ import { trimSchoolText } from "../../../utils/helper";
 export interface School {
   id: string;
   name: string;
-  specialization: string;
   location: string;
-  link: string;
+  type: string;
 }
 
 export const columns: ColumnDef<School>[] = [
@@ -32,11 +31,11 @@ export const columns: ColumnDef<School>[] = [
     },
   },
   {
-    accessorKey: "specialization",
-    header: () => <div className="font-bold underline">Specialization</div>,
-  },
-  {
     accessorKey: "location",
     header: () => <div className="font-bold underline">Location</div>,
+  },
+  {
+    accessorKey: "type",
+    header: () => <div className="font-bold underline">Type</div>,
   },
 ];

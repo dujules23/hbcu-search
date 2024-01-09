@@ -25,18 +25,19 @@ async function schoolScraper() {
       const name = $(tds[0]).text();
       // turns school names in to slugs then puts them into the database
       const slug = name.toLocaleLowerCase().replace(/ /g, "-");
-      console.log(slug);
-
       // finds locations
       const location = $(tds[1]).text();
       // finds all links
       const link = $(tds[2]).text();
+      // finds each school type
+      const type = $(tds[3]).text();
       // creates a new school document for each school
       const school = new School({
-        name: name,
-        location: location,
-        link: link,
-        slug: slug,
+        name,
+        location,
+        link,
+        slug,
+        type,
       });
       // saves to MongoDB
       await school.save();

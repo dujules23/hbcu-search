@@ -7,6 +7,7 @@ const School = mongoose.model(
     link: String,
     location: String,
     slug: String,
+    type: String,
   })
 );
 

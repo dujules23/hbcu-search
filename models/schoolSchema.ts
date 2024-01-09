@@ -9,6 +9,7 @@ export interface SchoolModelSchema {
   description: string;
   image: string;
   slug: string;
+  type: string;
 }
 
 const SchoolSchema = new Schema<SchoolModelSchema>(
@@ -45,6 +46,11 @@ const SchoolSchema = new Schema<SchoolModelSchema>(
       type: String,
       required: false,
       unique: true,
+    },
+    type: {
+      type: String,
+      required: false,
+      unique: false,
     },
   },
   {
