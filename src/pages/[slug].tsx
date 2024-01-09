@@ -11,6 +11,16 @@ import dbConnect from "../../lib/dbConnect";
 import { trimSchoolText } from "../../utils/helper";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/router";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 // interface Props {
 //   name?: string;
@@ -20,32 +30,67 @@ import { Button } from "@/components/ui/button";
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const SchoolPage: NextPage<Props> = ({ school }) => {
-  const { id, name, link, location, slug } = school;
+  const { id, name, link, location, type } = school;
+
+  const router = useRouter();
 
   return (
     <DefaultLayout>
-      <div className="">
-        <div className="flex justify-center p-8 space-x-6">
-          {/* School Card */}
-          <div className="bg-white text-gray-400 text-xl rounded p-8 w-1/3 h-52">
-            <div>{name}</div>
-            <a
-              className="hover:underline"
-              target="_blank"
-              rel="noreferrer"
-              href={`//${link}`}
-            >
+      <div className="flex justify-center m-4">
+        <Card className="w-[380px] p-4 rounded shadow-lg">
+          <CardHeader>
+            <CardTitle className="mb-12 font-bold">{name}</CardTitle>
+            <CardDescription></CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="">
+              <p>{location}</p>
+              <p>{type}</p>
+            </div>
+          </CardContent>
+          <CardFooter className="flex justify-center space-x-5 mt-10">
+            <a className="hover:underline" href={`//${link}`}>
               Visit School
             </a>
-          </div>
-          {/* Info Card  */}
-          <div>{location}</div>
-        </div>
-        <div className="flex justify-center border mb-4 w-12">
-          <Button size="default">Back</Button>
-        </div>
+            <Button
+              className="justify-center border"
+              onClick={() => router.push("/")}
+            >
+              Back
+            </Button>
+          </CardFooter>
+        </Card>
       </div>
     </DefaultLayout>
+
+    // <DefaultLayout>
+    //   <div className="">
+    //     <div className="flex justify-center p-8 space-x-6">
+    //       {/* School Card */}
+    //       <div className="bg-white text-gray-400 text-xl rounded p-8 w-1/3 h-52">
+    //         <h1 className="">{name}</h1>
+    //         <a
+    //           className="hover:underline"
+    //           target="_blank"
+    //           rel="noreferrer"
+    //           href={`//${link}`}
+    //         >
+    //           Visit School
+    //         </a>
+    //       </div>
+    //       {/* Info Card  */}
+    //       <div>
+    //         <div>{location}</div>
+    //         <div>{type}</div>
+    //       </div>
+    //     </div>
+    //     <div className="flex justify-center border mb-4 w-12">
+    //       <Button onClick={() => router.push("/")} size="default">
+    //         Back
+    //       </Button>
+    //     </div>
+    //   </div>
+    // </DefaultLayout>
   );
 };
 
@@ -82,6 +127,7 @@ interface StaticPropsResponse {
     link: string;
     location: string;
     slug: string;
+    type: string;
   };
 }
 
@@ -94,7 +140,7 @@ export const getStaticProps: GetStaticProps<
     const school = await School.findOne({ slug: params?.slug });
     if (!school) return { notFound: true };
 
-    const { _id, name, link, location, slug } = school;
+    const { _id, name, link, location, slug, type } = school;
 
     return {
       props: {
@@ -104,6 +150,7 @@ export const getStaticProps: GetStaticProps<
           link,
           location,
           slug,
+          type,
         },
       },
       revalidate: 60,
