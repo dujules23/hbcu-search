@@ -19,3 +19,35 @@ export const selectedSchools = async (limit: number) => {
   const schools = await School.find().limit(5);
   return schools;
 };
+
+export const parseAddress = (address: string) => {
+  // Make sure the address is a string.
+  if (typeof address !== "string") throw "Address is not a string.";
+
+  // Trim the address.
+  address = address.trim();
+
+  // Make an object to contain the data.
+  let returned = {};
+
+  // Find the comma.
+  var comma = address.indexOf(",");
+
+  // Pull out the city.
+  returned.street = address.slice(0, comma);
+
+  // Get everything after the city.
+  var after = address.substring(comma + 2); // The string after the comma, +2 so that we skip the comma and the space.
+
+  // Find the space.
+  var space = after.lastIndexOf(" ");
+
+  // Pull out the state.
+  returned.cityState = after.slice(0, space);
+
+  // Pull out the zip code.
+  returned.zip = after.substring(space + 1);
+
+  // Return the data.
+  return returned.cityState;
+};

@@ -2,7 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
-import { trimSchoolText } from "../../../utils/helper";
+import { parseAddress, trimSchoolText } from "../../../utils/helper";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -33,6 +33,7 @@ export const columns: ColumnDef<School>[] = [
   {
     accessorKey: "location",
     header: () => <div className="font-bold underline">Location</div>,
+    cell: ({ row }) => <div>{parseAddress(row.original.location)}</div>,
   },
   {
     accessorKey: "type",

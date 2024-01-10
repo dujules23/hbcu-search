@@ -8,7 +8,7 @@ import {
 } from "next";
 import School from "../../models/schoolSchema";
 import dbConnect from "../../lib/dbConnect";
-import { trimSchoolText } from "../../utils/helper";
+import { parseAddress, trimSchoolText } from "../../utils/helper";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/router";
@@ -21,11 +21,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
-// interface Props {
-//   name?: string;
-//   desc?: string;
-// }
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -44,7 +39,7 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
           </CardHeader>
           <CardContent>
             <div className="">
-              <p>{location}</p>
+              <p>{parseAddress(location)}</p>
               <p>{type}</p>
             </div>
           </CardContent>
