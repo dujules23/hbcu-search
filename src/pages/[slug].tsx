@@ -44,7 +44,12 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
             </div>
           </CardContent>
           <CardFooter className="flex justify-center space-x-5 mt-10">
-            <a className="hover:underline" href={`//${link}`}>
+            <a
+              className="hover:underline"
+              href={`//${link}`}
+              target="_blank"
+              rel="noreferrer"
+            >
               Visit School
             </a>
             <Button
