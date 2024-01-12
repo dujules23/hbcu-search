@@ -1,20 +1,8 @@
 export interface SchoolDetail {
-  name?: string;
-  link?: string;
-  location?: string;
-  specialization?: string;
-  description?: string;
-  image?: string;
-}
-
-export interface SchoolInput {
-  name?: string;
-  label?: string;
-  placeholder?: string;
-}
-
-export interface IncomingSchool {
-  school?: string;
-  specialization?: string;
-  location?: string;
+  id: string;
+  name: string;
+  link: string;
+  location: string;
+  type: string;
+  slug: string;
 }

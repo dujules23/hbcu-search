@@ -20,6 +20,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 import { motion } from "framer-motion";
+import PageContent from "@/components/common/PageContent";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -40,7 +41,7 @@ export function DataTable<TData, TValue>({
   return (
     <div className="">
       <div className="rounded border items-center m-4 md:w-92">
-        <motion.div layout transition={{ duration: 0.3 }}>
+        <PageContent>
           <Table>
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
@@ -89,7 +90,7 @@ export function DataTable<TData, TValue>({
               )}
             </TableBody>
           </Table>
-        </motion.div>
+        </PageContent>
       </div>
       <div className="flex items-center justify-center space-x-2 py-2 m-1">
         <Button

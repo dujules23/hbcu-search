@@ -5,11 +5,13 @@ import { GetServerSideProps, NextPage } from "next";
 import dbConnect from "../../lib/dbConnect";
 import School from "../../models/schoolSchema";
 import DefaultLayout from "@/components/layout/DefaultLayout";
+import PageContent from "@/components/common/PageContent";
+import { SchoolDetail } from "../../utils/types";
 
 const inter = Inter({ subsets: ["latin"] });
 
 type Props = {
-  schools: (typeof School)[];
+  schools: SchoolDetail[];
 };
 
 const Home: NextPage<Props> = ({ schools }) => {
