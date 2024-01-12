@@ -16,7 +16,7 @@ import { GetServerSideProps, GetStaticProps, NextPage } from "next";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
-import { trimSchoolText } from "../../utils/helper";
+import { trimSchoolText } from "../../../utils/helper";
 
 type Props = {
   open: boolean;

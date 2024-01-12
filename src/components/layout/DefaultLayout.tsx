@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 import AppHead from "../common/AppHead";
 import Navbar from "../common/nav/Navbar";
-import SearchBar from "../SearchBar";
+import SearchBar from "../search/SearchBar";
 import Footer from "../Footer";
 
 interface Props {
