@@ -22,7 +22,7 @@ export const columns: ColumnDef<School>[] = [
       return (
         // not using a Link tag because this is for internal links/routing, a tag with the implicit protocol works for external links.
         <Link
-          className="cursor-pointer hover:text-gray-600 hover:underline transition ease-in-out"
+          className="cursor-pointer hover:underline"
           href={"/" + trimSchoolText(row.original.name)}
         >
           {row.original.name}

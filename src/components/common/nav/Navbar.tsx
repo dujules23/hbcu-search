@@ -2,19 +2,12 @@ import Link from "next/link";
 import { FC, useState } from "react";
 import { APP_NAME } from "../AppHead";
 import { HiLightBulb } from "react-icons/hi";
+import useDarkMode from "../../../../hooks/useDarkMode";
 
 interface Props {}
 
 const Navbar: FC<Props> = (): JSX.Element => {
-  const [isClicked, setIsClicked] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-
-  const openForm = () => {
-    if (!isClicked) {
-      setIsClicked(false);
-    }
-    setIsClicked(true);
-  };
+  const { toggleTheme } = useDarkMode();
 
   return (
     <>
@@ -28,7 +21,7 @@ const Navbar: FC<Props> = (): JSX.Element => {
         <div className="flex items-center space-x-4">
           {/* Dark Mode Button */}
           <div className="flex items-center space-x-5 hover:text-yellow-400 transition ease-in-out">
-            <button>
+            <button onClick={toggleTheme}>
               <HiLightBulb size={34} />
             </button>
           </div>

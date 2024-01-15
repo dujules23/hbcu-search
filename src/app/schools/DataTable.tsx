@@ -40,7 +40,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="">
-      <div className="rounded border border-dark-primary items-center m-4 md:w-92">
+      <div className="rounded border dark:border-light-primary border-dark-primary items-center m-4 md:w-92">
         <PageContent>
           <Table>
             <TableHeader>
