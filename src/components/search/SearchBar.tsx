@@ -12,7 +12,7 @@ const SearchBar: FC<Props> = (props): JSX.Element => {
       <div className="pr-2 ">
         <Input
           onClick={() => setOpen(true)}
-          className="w-72 rounded border-gray-700 hover:bg-gray-700 transition ease-in-out cursor-pointer"
+          className="w-72 rounded border-gray-700 hover:bg-nav-primary hover:text-light-primary transition ease-in-out cursor-pointer"
           placeholder="Search..."
         />
       </div>

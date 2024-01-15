@@ -52,8 +52,11 @@ export const SearchDialog: React.FC<Props> = ({
   return (
     <>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Search for a school..." />
-        <CommandList>
+        <CommandInput
+          className="bg-nav-primary"
+          placeholder="Search for a school..."
+        />
+        <CommandList className="bg-nav-primary">
           <CommandEmpty>No results found.</CommandEmpty>
           {schools.map((school) => {
             return (

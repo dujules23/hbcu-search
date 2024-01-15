@@ -2,17 +2,6 @@ import Link from "next/link";
 import { FC, useState } from "react";
 import { APP_NAME } from "../AppHead";
 import { HiLightBulb } from "react-icons/hi";
-import { AddSchoolForm } from "../../../app/schools/AddSchoolForm";
-import FormModal from "@/components/FormModal";
-import { Form } from "react-hook-form";
-import { ModalProps } from "@/components/ModalContainer";
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogTrigger,
-} from "@radix-ui/react-dialog";
-import { DialogHeader } from "@/components/ui/dialog";
 
 interface Props {}
 
@@ -29,7 +18,7 @@ const Navbar: FC<Props> = (): JSX.Element => {
 
   return (
     <>
-      <div className="flex items-center justify-between p-6">
+      <div className="flex items-center justify-between p-6 card-foreground bg-nav-primary text-light-primary">
         {/* Title */}
         <Link href="/">
           <div className="flex items-center space-x-2">
