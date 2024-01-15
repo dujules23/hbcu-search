@@ -62,7 +62,7 @@ export const SearchDialog: React.FC<Props> = ({
             return (
               <CommandItem key={school._id}>
                 <Link
-                  className="hover:text-gray-700 hover:underline transition ease-in-out p-2"
+                  className="hover:underline transition ease-in-out p-2"
                   href={"/" + trimSchoolText(school.name)}
                 >
                   {school.name}

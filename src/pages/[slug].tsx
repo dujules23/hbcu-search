@@ -9,7 +9,6 @@ import {
 import School from "../../models/schoolSchema";
 import dbConnect from "../../lib/dbConnect";
 import { parseAddress, trimSchoolText } from "../../utils/helper";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/router";
 
@@ -55,7 +54,7 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
                 Visit School
               </a>
               <Button
-                className="justify-center border"
+                className="justify-center border hover:bg-nav-primary hover:text-light-primary"
                 onClick={() => router.push("/")}
               >
                 Back
