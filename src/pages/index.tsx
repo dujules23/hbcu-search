@@ -7,6 +7,7 @@ import School from "../../models/schoolSchema";
 import DefaultLayout from "@/components/layout/DefaultLayout";
 import PageContent from "@/components/common/PageContent";
 import { SchoolDetail } from "../../utils/types";
+import React from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +15,7 @@ type Props = {
   schools: SchoolDetail[];
 };
 
-const Home: NextPage<Props> = ({ schools }) => {
+export const Home: NextPage<Props> = ({ schools }) => {
   return (
     <DefaultLayout>
       <DataTable columns={columns} data={schools} />
@@ -45,5 +46,3 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
     return { notFound: true };
   }
 };
-
-export default Home;
