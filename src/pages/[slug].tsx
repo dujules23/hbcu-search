@@ -11,7 +11,7 @@ import dbConnect from "../../lib/dbConnect";
 import { parseAddress, trimSchoolText } from "../../utils/helper";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/router";
-
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -25,7 +25,7 @@ import PageContent from "@/components/common/PageContent";
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const SchoolPage: NextPage<Props> = ({ school }) => {
-  const { id, name, link, location, type } = school;
+  const { id, name, link, location, type, image } = school;
 
   const router = useRouter();
 
@@ -33,10 +33,15 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
     <DefaultLayout>
       <PageContent>
         <div className="flex justify-center m-4">
-          <Card className="w-[380px] p-4 rounded shadow-lg">
+          <Card className="w-[550px] p-4 rounded shadow-lg">
             <CardHeader>
               <CardTitle className="mb-12 font-bold">{name}</CardTitle>
-              <CardDescription></CardDescription>
+              {/* <img
+                className="h-[300px] w-full"
+                src={image}
+                alt="school-image"
+                fill
+              /> */}
             </CardHeader>
             <CardContent>
               <div className="">
@@ -101,6 +106,7 @@ interface StaticPropsResponse {
     location: string;
     slug: string;
     type: string;
+    image?: string;
   };
 }
 
