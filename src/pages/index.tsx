@@ -15,7 +15,7 @@ type Props = {
   schools: SchoolDetail[];
 };
 
-export const Home: NextPage<Props> = ({ schools }) => {
+const Home: NextPage<Props> = ({ schools }) => {
   return (
     <DefaultLayout>
       <DataTable columns={columns} data={schools} />
@@ -46,3 +46,5 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
     return { notFound: true };
   }
 };
+
+export default Home;
