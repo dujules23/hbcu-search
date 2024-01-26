@@ -21,6 +21,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import PageContent from "@/components/common/PageContent";
+import { FaPlus } from "react-icons/fa6";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -32,19 +33,22 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
   return (
     <DefaultLayout>
       <PageContent>
-        <div className="flex justify-center m-4">
+        <div className="flex justify-center m-4 items-center">
           <Card className="w-[550px] p-4 rounded shadow-lg">
-            <CardHeader>
+            <CardHeader className="items-center">
               <CardTitle className="mb-12 font-bold">{name}</CardTitle>
-              {/* <img
-                className="h-[300px] w-full"
-                src={image}
-                alt="school-image"
-                fill
-              /> */}
+              <div className="flex flex-col border w-1/2 h-1/2 p-2 justify-center items-center">
+                <h3>Add Image</h3>
+                <Button
+                  onClick={() => console.log("this works")}
+                  className="hover:bg-nav-primary hover:text-light-primary"
+                >
+                  <FaPlus />
+                </Button>
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="">
+              <div className="flex flex-col items-center">
                 <p>{parseAddress(location)}</p>
                 <p>{type}</p>
               </div>
