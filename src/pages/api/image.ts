@@ -35,6 +35,22 @@ const uploadNewImage: NextApiHandler = async (req, res) => {
   });
 };
 
-const readAllImages: NextApiHandler = (req, res) => {};
+const readAllImages: NextApiHandler = async (req, res) => {
+  try {
+    const { resources } = await cloudinary.api.resources({
+      resource_type: "image",
+      type: "upload",
+      prefix: "hbcu-database",
+    });
+
+    const images = resources.map(({ secure_url }: any) => {
+      return { src: secure_url };
+    });
+
+    res.json({ images });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 export default handler;
