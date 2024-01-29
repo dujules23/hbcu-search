@@ -22,13 +22,24 @@ import {
 } from "@/components/ui/card";
 import PageContent from "@/components/common/PageContent";
 import { FaPlus } from "react-icons/fa6";
+import axios from "axios";
+import { useEffect } from "react";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const SchoolPage: NextPage<Props> = ({ school }) => {
   const { id, name, link, location, type, image } = school;
 
+  const fetchImages = async () => {
+    const { data } = await axios("/api/image");
+    console.log(data);
+  };
+
   const router = useRouter();
+
+  useEffect(() => {
+    fetchImages();
+  }, []);
 
   return (
     <DefaultLayout>
