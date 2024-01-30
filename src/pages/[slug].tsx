@@ -23,23 +23,26 @@ import {
 import PageContent from "@/components/common/PageContent";
 import { FaPlus } from "react-icons/fa6";
 import axios from "axios";
-import { useEffect } from "react";
+import { ChangeEventHandler, useEffect, useState } from "react";
+import ImageSelect from "@/components/image/ImageSelect";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const SchoolPage: NextPage<Props> = ({ school }) => {
   const { id, name, link, location, type, image } = school;
 
-  const fetchImages = async () => {
-    const { data } = await axios("/api/image");
-    console.log(data);
-  };
-
   const router = useRouter();
 
-  useEffect(() => {
-    fetchImages();
-  }, []);
+  // const fetchImages = async () => {
+  //   const { data } = await axios("/api/image");
+  //   console.log(data);
+  // };
+
+  // useEffect(() => {
+  //   fetchImages();
+  // }, []);
+
+  const updateImage = () => {};
 
   return (
     <DefaultLayout>
@@ -48,15 +51,28 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
           <Card className="w-[550px] p-4 rounded shadow-lg">
             <CardHeader className="items-center">
               <CardTitle className="mb-12 font-bold">{name}</CardTitle>
-              <div className="flex flex-col border w-1/2 h-1/2 p-2 justify-center items-center">
-                <h3>Add Image</h3>
-                <Button
-                  onClick={() => console.log("this works")}
-                  className="hover:bg-nav-primary hover:text-light-primary"
-                >
-                  <FaPlus />
-                </Button>
-              </div>
+              <ImageSelect onChange={updateImage} />
+              {/* {image ? (
+                <div>
+                  <input
+                    type="file"
+                    hidden
+                    accept="image/jpg, image/png, image/jpeg"
+                    id="thumbnail"
+                    onChange={handleChange}
+                  />
+                </div>
+              ) : (
+                <div className="flex flex-col border w-1/2 h-1/2 p-2 justify-center items-center">
+                  <h3>Add Image</h3>
+                  <Button
+                    onClick={() => console.log("this works")}
+                    className="hover:bg-nav-primary hover:text-light-primary"
+                  >
+                    <FaPlus />
+                  </Button>
+                </div>
+              )} */}
             </CardHeader>
             <CardContent>
               <div className="flex flex-col items-center">
@@ -79,6 +95,7 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
               >
                 Back
               </Button>
+              {image && <Button>Upload Image</Button>}
             </CardFooter>
           </Card>
         </div>
@@ -134,7 +151,7 @@ export const getStaticProps: GetStaticProps<
     const school = await School.findOne({ slug: params?.slug });
     if (!school) return { notFound: true };
 
-    const { _id, name, link, location, slug, type } = school;
+    const { _id, name, link, location, slug, type, image } = school;
 
     return {
       props: {
@@ -145,6 +162,7 @@ export const getStaticProps: GetStaticProps<
           location,
           slug,
           type,
+          image: image || "",
         },
       },
       revalidate: 60,
