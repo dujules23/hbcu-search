@@ -51,7 +51,7 @@ const ImageSelect: FC<Props> = ({ initialValue, onChange }) => {
             <div className="flex flex-col">
               <img src={selectedImage} alt="" />
               <Button
-                onClick={() => console.log("this works")}
+                onClick={handleImageUpload}
                 className="hover:bg-nav-primary hover:text-light-primary"
               >
                 Upload Image

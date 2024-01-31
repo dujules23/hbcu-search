@@ -52,27 +52,6 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
             <CardHeader className="items-center">
               <CardTitle className="mb-12 font-bold">{name}</CardTitle>
               <ImageSelect onChange={updateImage} />
-              {/* {image ? (
-                <div>
-                  <input
-                    type="file"
-                    hidden
-                    accept="image/jpg, image/png, image/jpeg"
-                    id="thumbnail"
-                    onChange={handleChange}
-                  />
-                </div>
-              ) : (
-                <div className="flex flex-col border w-1/2 h-1/2 p-2 justify-center items-center">
-                  <h3>Add Image</h3>
-                  <Button
-                    onClick={() => console.log("this works")}
-                    className="hover:bg-nav-primary hover:text-light-primary"
-                  >
-                    <FaPlus />
-                  </Button>
-                </div>
-              )} */}
             </CardHeader>
             <CardContent>
               <div className="flex flex-col items-center">
