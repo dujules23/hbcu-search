@@ -29,18 +29,19 @@ import ImageSelect from "@/components/image/ImageSelect";
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const SchoolPage: NextPage<Props> = ({ school }) => {
+  const [images, setImages] = useState<{ src: string }[]>([]);
   const { id, name, link, location, type, image } = school;
 
   const router = useRouter();
 
-  // const fetchImages = async () => {
-  //   const { data } = await axios("/api/image");
-  //   console.log(data);
-  // };
+  const fetchImages = async () => {
+    const { data } = await axios("/api/image");
+    setImages(data.images);
+  };
 
-  // useEffect(() => {
-  //   fetchImages();
-  // }, []);
+  useEffect(() => {
+    fetchImages();
+  }, []);
 
   const updateImage = () => {};
 
@@ -74,7 +75,6 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
               >
                 Back
               </Button>
-              {image && <Button>Upload Image</Button>}
             </CardFooter>
           </Card>
         </div>

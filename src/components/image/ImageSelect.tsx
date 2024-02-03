@@ -19,18 +19,40 @@ const ImageSelect: FC<Props> = ({ initialValue, onChange }) => {
     const file = files[0];
 
     setSelectedImage(URL.createObjectURL(file));
-    onChange(file);
+    handleImageUpload(file);
   };
 
   // TODO: need to implement upload to cloudinary
   const handleImageUpload = async (image: File) => {
-    setUploading(true);
-    const formData = new FormData();
-    formData.append("image", image);
-    const { data } = await axios.post("/api/image", formData);
-    setUploading(false);
-    setImages([data, ...images]);
+    try {
+      setUploading(true);
+      const formData = new FormData();
+      formData.append("image", image);
+      const { data } = await axios.post("/api/image", formData);
+      console.log(data);
+      setUploading(false);
+      setImages([data, ...images]);
+      console.log("sent image");
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  // const handleImageUpload = async (
+  //   event: React.MouseEvent<HTMLButtonElement>
+  // ) => {
+  //   // Inside this function, you can access the file using selectedImage state
+  //   try {
+  //     setUploading(true);
+  //     const formData = new FormData();
+  //     formData.append("image", selectedImage);
+  //     const { data } = await axios.post("/api/image", formData);
+  //     setUploading(false);
+  //     setImages([data, ...images]);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   useEffect(() => {
     if (typeof initialValue === "string") setSelectedImage(initialValue);
@@ -51,7 +73,7 @@ const ImageSelect: FC<Props> = ({ initialValue, onChange }) => {
             <div className="flex flex-col">
               <img src={selectedImage} alt="" />
               <Button
-                onClick={handleImageUpload}
+                onClick={() => handleImageUpload}
                 className="hover:bg-nav-primary hover:text-light-primary"
               >
                 Upload Image
