@@ -17,12 +17,16 @@ const handler: NextApiHandler = (req, res) => {
   }
 };
 
+interface IncomingSchool {
+  image: string;
+}
+
 const updateSchool: NextApiHandler = async (req, res) => {
   const schoolId = req.query.schoolId as string;
   const school = await School.findById(schoolId);
   if (!school) return res.status(404).json({ error: "School not found!" });
 
-  const { files, body } = await readFile(req);
+  const { files, body } = await readFile<IncomingSchool>(req);
 
   const { image } = body;
   school.image = image;
