@@ -1,13 +1,13 @@
 import { ChangeEventHandler, FC, useEffect, useState } from "react";
 import { Button } from "../ui/button";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import axios from "axios";
 
 interface Props {
   initialValue?: string;
-  onChange(file: File): void;
 }
 
-const ImageSelect: FC<Props> = ({ initialValue, onChange }) => {
+const ImageSelect: FC<Props> = ({ initialValue }) => {
   const [uploading, setUploading] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
   const [images, setImages] = useState<{ src: string }[]>([]);
@@ -68,22 +68,12 @@ const ImageSelect: FC<Props> = ({ initialValue, onChange }) => {
           id="image"
           onChange={handleChange}
         />
+        {selectedImage && <div>{selectedImage}</div>}
         <label htmlFor="image">
-          {selectedImage ? (
-            <div className="flex flex-col">
-              <img src={selectedImage} alt="" />
-              <Button
-                onClick={() => handleImageUpload}
-                className="hover:bg-nav-primary hover:text-light-primary"
-              >
-                Upload Image
-              </Button>
-            </div>
-          ) : (
-            <div className="flex flex-col border w-full h-1/2 p-8 justify-center items-center cursor-pointer">
-              <h3>Add Image</h3>
-            </div>
-          )}
+          <div className="flex flex-col border w-full h-1/2 px-4 py-1 justify-center items-center cursor-pointer">
+            <h3>Add Image</h3>
+            {uploading && <AiOutlineLoading3Quarters className="" />}
+          </div>
         </label>
       </div>
     </>

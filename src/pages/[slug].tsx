@@ -25,10 +25,12 @@ import { FaPlus } from "react-icons/fa6";
 import axios from "axios";
 import { ChangeEventHandler, useEffect, useState } from "react";
 import ImageSelect from "@/components/image/ImageSelect";
+import AddImageForm from "@/app/schools/AddImageForm";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const SchoolPage: NextPage<Props> = ({ school }) => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [images, setImages] = useState<{ src: string }[]>([]);
   const { id, name, link, location, type, image } = school;
 
@@ -45,6 +47,14 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
 
   const updateImage = () => {};
 
+  const openImageModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeImageModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <DefaultLayout>
       <PageContent>
@@ -52,7 +62,7 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
           <Card className="w-[550px] p-4 rounded shadow-lg">
             <CardHeader className="items-center">
               <CardTitle className="mb-12 font-bold">{name}</CardTitle>
-              <ImageSelect onChange={updateImage} />
+              {/* <ImageSelect /> */}
             </CardHeader>
             <CardContent>
               <div className="flex flex-col items-center">
@@ -75,8 +85,16 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
               >
                 Back
               </Button>
+              <ImageSelect />
             </CardFooter>
           </Card>
+          {isModalOpen && (
+            <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+              <div className="bg-white p-6 rounded-xl shadow-xl">
+                <AddImageForm onClose={closeImageModal} />
+              </div>
+            </div>
+          )}
         </div>
       </PageContent>
     </DefaultLayout>

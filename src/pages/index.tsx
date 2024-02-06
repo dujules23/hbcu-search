@@ -8,6 +8,7 @@ import DefaultLayout from "@/components/layout/DefaultLayout";
 import PageContent from "@/components/common/PageContent";
 import { SchoolDetail } from "../../utils/types";
 import React from "react";
+import AddImageForm from "@/app/schools/AddImageForm";
 
 const inter = Inter({ subsets: ["latin"] });
 
