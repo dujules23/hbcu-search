@@ -66,6 +66,7 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
             </CardHeader>
             <CardContent>
               <div className="flex flex-col items-center">
+                {image ? <img className="w-full " src={image} /> : null}
                 <p>{parseAddress(location)}</p>
                 <p>{type}</p>
               </div>
@@ -85,16 +86,16 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
               >
                 Back
               </Button>
-              <ImageSelect />
+              {/* <ImageSelect /> */}
             </CardFooter>
           </Card>
-          {isModalOpen && (
+          {/* {isModalOpen && (
             <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
               <div className="bg-white p-6 rounded-xl shadow-xl">
                 <AddImageForm onClose={closeImageModal} />
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </PageContent>
     </DefaultLayout>
