@@ -66,7 +66,11 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
             </CardHeader>
             <CardContent>
               <div className="flex flex-col items-center">
-                {image ? <img className="w-full " src={image} /> : null}
+                {image ? (
+                  <img className="w-full " src={image} />
+                ) : (
+                  <div className="border p-4 mb-4">No Image</div>
+                )}
                 <p>{parseAddress(location)}</p>
                 <p>{type}</p>
               </div>
