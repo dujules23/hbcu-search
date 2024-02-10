@@ -3,6 +3,7 @@ import { FC, useState } from "react";
 import { APP_NAME } from "../AppHead";
 import { HiLightBulb } from "react-icons/hi";
 import useDarkMode from "../../../../hooks/useDarkMode";
+import { Button } from "@/components/ui/button";
 
 interface Props {}
 
@@ -19,6 +20,10 @@ const Navbar: FC<Props> = (): JSX.Element => {
           </div>
         </Link>
         <div className="flex items-center space-x-4">
+          {/* Admin Login Button */}
+          <div className="border rounded hover:text-black hover:bg-white transition">
+            <Button>Admin Login</Button>
+          </div>
           {/* Dark Mode Button */}
           <div className="flex items-center space-x-5 hover:text-yellow-400 transition ease-in-out">
             <button onClick={toggleTheme}>
