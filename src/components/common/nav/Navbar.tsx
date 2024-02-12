@@ -21,7 +21,7 @@ const Navbar: FC<Props> = (): JSX.Element => {
         </Link>
         <div className="flex items-center space-x-4">
           {/* Admin Login Button */}
-          <div className="border rounded hover:text-black hover:bg-white transition">
+          <div className="border rounded hover:text-black hover:bg-white transition ease-in-out">
             <Button>Admin Login</Button>
           </div>
           {/* Dark Mode Button */}
