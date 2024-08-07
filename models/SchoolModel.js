@@ -8,6 +8,7 @@ const School = mongoose.model(
     location: String,
     slug: String,
     type: String,
+    image: String,
   })
 );
 
