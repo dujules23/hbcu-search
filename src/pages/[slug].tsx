@@ -86,7 +86,7 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
               </a>
               <Button
                 className="justify-center border hover:bg-nav-primary hover:text-light-primary"
-                onClick={() => router.push("/")}
+                onClick={() => router.push("/SchoolSearch")}
               >
                 Back
               </Button>
