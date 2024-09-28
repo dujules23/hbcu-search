@@ -20,6 +20,12 @@ export const selectedSchools = async (limit: number) => {
   return schools;
 };
 
+interface Address {
+  street: string;
+  cityState: string;
+  zip: string;
+}
+
 export const parseAddress = (address: string) => {
   // Make sure the address is a string.
   if (typeof address !== "string") throw "Address is not a string.";
@@ -28,7 +34,11 @@ export const parseAddress = (address: string) => {
   address = address.trim();
 
   // Make an object to contain the data.
-  let returned = {};
+  let returned: Address = {
+    street: "",
+    cityState: "",
+    zip: "",
+  };
 
   // Find the comma.
   var comma = address.indexOf(",");

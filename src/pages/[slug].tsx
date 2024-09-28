@@ -69,6 +69,7 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
                 {image ? (
                   <img className="w-full " src={image} />
                 ) : (
+                  // <Image alt="school" src={image} fill={true} />
                   <div className="border p-4 mb-4">No Image</div>
                 )}
                 <p>{parseAddress(location)}</p>
