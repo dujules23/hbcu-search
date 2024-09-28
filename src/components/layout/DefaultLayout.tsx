@@ -16,7 +16,7 @@ const DefaultLayout: FC<Props> = ({ name, desc, children }): JSX.Element => {
       <AppHead title={name} desc={desc} />
       <div className="min-h-screen transition dark:bg-dark-primary dark:text-light-primary bg-light-primary text-dark-primary">
         <Navbar />
-        <div className="max-w-7xl mx-auto">{children}</div>
+        <div className="max-w-7xl mx-auto pb-16">{children}</div>
         <Footer />
       </div>
     </>
