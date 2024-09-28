@@ -12,7 +12,7 @@ const Navbar: FC<Props> = (): JSX.Element => {
 
   return (
     <>
-      <div className="flex items-center justify-between p-6 card-foreground bg-nav-primary text-light-primary">
+      <div className="flex items-center justify-between p-4 card-foreground bg-nav-primary text-light-primary">
         {/* Title */}
         <Link href="/">
           <div className="flex items-center space-x-2">
