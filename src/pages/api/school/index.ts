@@ -43,7 +43,7 @@ const getSchools: NextApiHandler = async (req, res) => {
     // response with data object
     res.status(200).json({ data: schools });
     // backend console log for verification of data retrieval
-    console.log("Data retrieved successfully");
+    // console.log("Data retrieved successfully");
   } catch (error) {
     console.log(error);
     res.status(404).json({ success: false, data: error });

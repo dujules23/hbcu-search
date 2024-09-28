@@ -26,34 +26,29 @@ import axios from "axios";
 import { ChangeEventHandler, useEffect, useState } from "react";
 import ImageSelect from "@/components/image/ImageSelect";
 import AddImageForm from "@/app/schools/AddImageForm";
+import { SchoolLoadingSkeleton } from "@/components/common/SchoolLoadingSkeleton";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const SchoolPage: NextPage<Props> = ({ school }) => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [images, setImages] = useState<{ src: string }[]>([]);
+  const [loading, setLoading] = useState(true);
   const { id, name, link, location, type, image } = school;
 
   const router = useRouter();
 
-  const fetchImages = async () => {
-    const { data } = await axios("/api/image");
-    setImages(data.images);
-  };
-
   useEffect(() => {
-    fetchImages();
+    // Simulate a delay to demonstrate client-side hydration
+    const timer = setTimeout(() => setLoading(false), 500); // Adjust time as needed
+    return () => clearTimeout(timer); // Cleanup timer on unmount
   }, []);
 
-  const updateImage = () => {};
-
-  const openImageModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeImageModal = () => {
-    setIsModalOpen(false);
-  };
+  if (loading) {
+    return (
+      <DefaultLayout>
+        <SchoolLoadingSkeleton />
+      </DefaultLayout>
+    );
+  }
 
   return (
     <DefaultLayout>
@@ -94,13 +89,6 @@ const SchoolPage: NextPage<Props> = ({ school }) => {
               {/* <ImageSelect /> */}
             </CardFooter>
           </Card>
-          {/* {isModalOpen && (
-            <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
-              <div className="bg-white p-6 rounded-xl shadow-xl">
-                <AddImageForm onClose={closeImageModal} />
-              </div>
-            </div>
-          )} */}
         </div>
       </PageContent>
     </DefaultLayout>

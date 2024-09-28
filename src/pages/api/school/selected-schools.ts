@@ -20,7 +20,7 @@ const getLimitedSchools: NextApiHandler = async (req, res) => {
     };
     const schools = await selectedSchools(parseInt(limit));
     res.status(200).json({ schools: schools });
-    console.log("Data retrieved successfully");
+    // console.log("Data retrieved successfully");
   } catch (error: any) {
     res.status(500).json({ error: error.message });
   }
