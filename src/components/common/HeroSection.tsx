@@ -11,7 +11,7 @@ const HeroSection: FC<Props> = (props): JSX.Element => {
     router.push("/SchoolSearch");
   };
   return (
-    <div className="flex flex-col items-center justify-center h-screen text-center dark:bg-dark-primary">
+    <div className="flex flex-col items-center justify-center mt-64 text-center dark:bg-dark-primary">
       <h1 className="text-6xl font-bold mb-16">Welcome to HBCU Search</h1>
       <p className="text-xl mb-36">Click below to begin.</p>
       <motion.button
