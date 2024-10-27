@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 
 import { motion } from "framer-motion";
 import PageContent from "@/components/common/PageContent";
+import { useState } from "react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -38,9 +39,18 @@ export function DataTable<TData, TValue>({
     getPaginationRowModel: getPaginationRowModel(),
   });
 
+  // const [isDesktop, setIsDesktop] = useState(false);
+
+  // const updateMedia = () => {
+  //   if (window.innerWidth < 640) {
+  //     setIsDesktop(true);
+  //   }
+  //   setIsDesktop(false);
+  // };
+
   return (
     <div className="">
-      <div className="rounded border dark:border-light-primary border-dark-primary items-center m-4 md:w-92">
+      <div className="rounded border dark:border-light-primary border-dark-primary items-center mt-8 mx-auto w-80 md:w-11/12 lg:w-[1000px]">
         <PageContent>
           <Table>
             <TableHeader>

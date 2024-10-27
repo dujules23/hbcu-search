@@ -9,6 +9,7 @@ import { DataTable } from "@/app/schools/DataTable";
 import { columns } from "../app/schools/columns";
 import SearchBar from "@/components/search/SearchBar";
 import { SearchLoadingSkeleton } from "@/components/common/SearchLoadingSkeleton";
+import Footer from "@/components/Footer";
 
 interface Props {
   schools: SchoolDetail[];
@@ -36,6 +37,7 @@ const SchoolSearch: NextPage<Props> = ({ schools }): JSX.Element => {
     <DefaultLayout>
       <SearchBar />
       <DataTable columns={columns} data={schools} />
+      <Footer />
     </DefaultLayout>
   );
 };
