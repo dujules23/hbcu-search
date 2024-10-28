@@ -24,6 +24,12 @@ const Navbar: FC<Props> = (): JSX.Element => {
           <div className="border rounded hover:text-black hover:bg-white transition ease-in-out">
             <Button>Admin Login</Button>
           </div>
+
+          <Link href={"https://commonblackcollegeapp.com/"}>
+            {" "}
+            <div className="hover:text-lime-500">Common App</div>
+          </Link>
+
           {/* Dark Mode Button */}
           <div className="flex items-center space-x-5 hover:text-yellow-400 transition ease-in-out">
             <button onClick={toggleTheme}>
